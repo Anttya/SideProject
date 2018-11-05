@@ -14,6 +14,7 @@ public enum GameplayState
 /// </summary>
 public class InputManager : MonoBehaviour {
 
+    public GameplayState gameState;
     //BoardManager boardManager;
     //public bool TileSelection;
 
@@ -34,6 +35,22 @@ public class InputManager : MonoBehaviour {
         //    PlayerMovementPhase();
         //}
 	}
+
+    private void CheckForStateSwitch()
+    {
+        switch(gameState)
+        {
+            case GameplayState.Pause:
+                //Check for menu exit
+                break;
+            case GameplayState.NothingSelected:
+                //Check for mouse selection on player
+                break;
+            case GameplayState.PlayerSelected:
+                //Check for some kind of attack
+                break;
+        }
+    }
 
     //private void PlayerMovementPhase()
     //{

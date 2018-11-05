@@ -10,32 +10,33 @@ public class BoardManager : MonoBehaviour {
     //A good next goal may be to make the board exactly at the center of the screen (easy)
     public GameObject tilePrefab;       //Reference to prefab of tile
 
+    public GameObject Board;            //A wrapper to hold all our tiles
     public Vector3 boardPosition;       //The position of the board in world space
     public Vector3 boardSize;
     public Vector3 worldBoardSize;
-    public Vector2 boardDimensions;     //The dimensions of the board
+    public Vector2Int boardDimensions;     //The dimensions of the board
     public GameObject[,] GameBoard;     //The board itself as an array of tiles.
 
     #endregion
 
     void Start () {
+        Board = new GameObject("Board"); //Initialize board as an empty
         CreateBoard(); //Instantiate all necessary tiles
         DrawBoard();
     }
 
 
     void Update () {
-        CheckMouseIndex();
+        //CheckMouseIndex();
         //GetMouse();
 	}
-
 
     /// <summary>
     /// Main method to draw the board (Instantiate tiles at correct locations).
     /// </summary>
     public void CreateBoard()
     {
-        GameBoard = new GameObject[(int)boardDimensions.x, (int)boardDimensions.y]; //Set the board dimensions to the array
+        GameBoard = new GameObject[boardDimensions.x, boardDimensions.y]; //Set the board dimensions to the array
         for (int i = 0; i < boardDimensions.x; i++) //Iterate through columns X
         {
             for (int j = 0; j < boardDimensions.y; j++) //Iterate through rows Y
@@ -43,6 +44,7 @@ public class BoardManager : MonoBehaviour {
                 GameBoard[i, j] = Instantiate(tilePrefab); //Create an array of individual tiles
                 GameBoard[i, j].GetComponent<TileInfo>().empty = true;
                 GameBoard[i, j].name = "X: " + i + "Y: " + j; //Rename for debugging purposes
+                GameBoard[i, j].transform.SetParent(Board.transform);
             }
         }
     }

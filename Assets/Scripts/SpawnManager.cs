@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour {
     {
         try
         {
-            if(isValidIndex(index))
+            if(IsValidIndex(index))
             {
                 Vector2 location = GameBoard[index.x, index.y].transform.position; //Get the position of the tile at that index
                 GameObject instance = Instantiate(prefab, location, Quaternion.identity); //Spawn the object
@@ -103,14 +103,7 @@ public class SpawnManager : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Helper method for getting a random index within our game board
-    /// </summary>
-    /// <returns>a random index within the board</returns>
-    private Vector2Int GetRandomBoardIndex()
-    {
-        return new Vector2Int(Random.Range(0, GameBoard.GetLength(0)), Random.Range(0, GameBoard.GetLength(1)));
-    }
+    
 
     /// <summary>
     /// Helper method for getting a VALID random index within the board
@@ -121,7 +114,7 @@ public class SpawnManager : MonoBehaviour {
         Vector2Int randomIndex = GetRandomBoardIndex();
 
         //NOTE: this can be made smarter
-        while (!isValidIndex(randomIndex)) //Check if the gameBoard is empty at the selected index
+        while (!IsValidIndex(randomIndex)) //Check if the gameBoard is empty at the selected index
         {
             randomIndex = GetRandomBoardIndex();
         }
@@ -130,11 +123,20 @@ public class SpawnManager : MonoBehaviour {
     }
 
     /// <summary>
+    /// Helper method for getting a random index within our game board
+    /// </summary>
+    /// <returns>a random index within the board</returns>
+    private Vector2Int GetRandomBoardIndex()
+    {
+        return new Vector2Int(Random.Range(0, GameBoard.GetLength(0)), Random.Range(0, GameBoard.GetLength(1)));
+    }
+
+    /// <summary>
     /// Helper method to check whether an index is occupied
     /// </summary>
     /// <param name="randomIndex">the index to check</param>
     /// <returns>whether that space on the board is currently occupied</returns>
-    private bool isValidIndex(Vector2Int randomIndex)
+    private bool IsValidIndex(Vector2Int randomIndex)
     {
         return GameBoard[randomIndex.x, randomIndex.y].GetComponent<TileInfo>().empty;
     }
