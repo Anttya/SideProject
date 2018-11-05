@@ -4,31 +4,25 @@ using UnityEngine;
 
 public class TileInfo : MonoBehaviour {
 
-    #region Fields
-
-    public GameObject content;  //Reference to whatever is inhabiting the tile.
-    public bool empty;          //Whether the tile is empty or not
-
-    #region DELETE
+    public GameObject tile;
     public bool occupiedByPlayer;
-    
+    public bool empty;
     public bool occupiableByPlayer;
-    #endregion
-
-
-    #endregion
-
+    public Vector2 index;
+    private InputManager iManager;
+    public string test;
 
 	void Start () {
-
+        iManager = GameObject.Find("GameManager").GetComponent<InputManager>();
+        index.x = (int)index.x;
+        index.y = (int)index.y;
     }
 	
 	void Update () {
-
-
+        CheckOccupied();
+        CheckOccupiable();
 	}
 
-    #region delete
     /// <summary>
     /// Checks to see if it's currently being occupied by the player
     /// </summary>
@@ -36,11 +30,11 @@ public class TileInfo : MonoBehaviour {
     {
         if (occupiedByPlayer == true)
         {
-            GetComponent<SpriteRenderer>().color = Color.yellow; //Yelow if true
+            tile.GetComponent<SpriteRenderer>().color = Color.yellow; //Yelow if true
         }
         else
         {
-            GetComponent<SpriteRenderer>().color = Color.white; //Nothing otherwise
+            tile.GetComponent<SpriteRenderer>().color = Color.white; //Nothing otherwise
         }
     }
 
@@ -49,14 +43,14 @@ public class TileInfo : MonoBehaviour {
     /// </summary>
     public void CheckOccupiable()
     {
-        if (occupiableByPlayer == true && empty == true)
+        if (occupiableByPlayer == true && iManager.TileSelection == true && empty == true)
         {
-            GetComponent<SpriteRenderer>().color = Color.red; //Red if true
+            tile.GetComponent<SpriteRenderer>().color = Color.red; //Red if true
         }
         else
         {
-            GetComponent<SpriteRenderer>().color = Color.white; //White otherwise
+            tile.GetComponent<SpriteRenderer>().color = Color.white; //White otherwise
         }
     }
-    #endregion
+
 }

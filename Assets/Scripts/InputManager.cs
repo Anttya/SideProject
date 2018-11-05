@@ -2,50 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// FSM to keep track of inputManager's behaviour
-/// </summary>
-public enum GameplayState
-{
-    Pause,
-    NothingSelected,
-    PlayerSelected
-}
-
-/// <summary>
-/// Input Manager class keeps track of inputs. 
-/// </summary>
 public class InputManager : MonoBehaviour {
 
+    BoardManager boardManager;
+    public bool TileSelection;
 
 	// Use this for initialization
 	void Start () {
-
+        boardManager = GetComponent<BoardManager>();
+        TileSelection = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //if(TileSelection == true)
-        //{
-        //    ChooseTile();
-        //}
-        //else
-        //{
-        //    PlayerMovementPhase();
-        //}
+        if(TileSelection == true)
+        {
+            ChooseTile();
+        }
+        else
+        {
+            PlayerMovementPhase();
+        }
 	}
 
+    private void PlayerMovementPhase()
+    {
+        boardManager.CheckPossibleMovement();
+    }
 
-
-    //private void PlayerMovementPhase()
-    //{
-    //    boardManager.CheckPossibleMovement();
-    //}
-
-    //private void ChooseTile()
-    //{
-    //    boardManager.MovePlayer();
-    //}
+    private void ChooseTile()
+    {
+        boardManager.MovePlayer();
+    }
 
     private void CheckMouseIndex()
     {
