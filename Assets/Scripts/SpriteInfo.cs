@@ -7,12 +7,9 @@ public class SpriteInfo : MonoBehaviour {
     #region Fields
     //Default Screen Dimensions (Based on this machine)
     private Vector2 defaultDimensions = new Vector2(1181, 442); //TODO: get rid of this
-    public Vector3 worldPosition;
     public Vector3 position;
-    public Vector2 min;
-    public Vector2 max;
 
-    public Vector2 newBounds
+    public Vector2 NewBounds
     {
         get
         {
@@ -21,6 +18,7 @@ public class SpriteInfo : MonoBehaviour {
         }
     }
 
+    #region min/max accessor properties
     public Vector2 FindMin
     {
         get
@@ -36,38 +34,15 @@ public class SpriteInfo : MonoBehaviour {
             return GetComponent<SpriteRenderer>().bounds.max;
         }
     }
-    Vector2 screenBounds; //TODO: For the future!
+    #endregion 
+
     #endregion
 
     void Start () {
-
-        //screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)); //For future purposes!
-        transform.localScale = newBounds;
-        SetMaxMin();
-        min = FindMin;
-        max = FindMax;
+        transform.localScale = NewBounds;
     }
 	
 	void Update () {
-        
-        CalculateWorldPosition();
 
 	}
-
-    private void CalculateWorldPosition()
-    {
-        worldPosition = Camera.main.WorldToViewportPoint(position);
-    }
-
-    /// <summary>
-    /// Gets position info for sprite as well as the bounds of the sprite
-    /// </summary>
-    private void SetMaxMin()
-    {
-        position = transform.position; //Gets sprite's current position
-
-        //Set minimum and maximum points for this sprite
-        //min = GetComponent<SpriteRenderer>().bounds.min; //+ transform.position; 
-        //max = GetComponent<SpriteRenderer>().bounds.max; //+ transform.position;
-    }
 }

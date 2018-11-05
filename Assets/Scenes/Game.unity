@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 1239063025543200, guid: c1e91f786695a1341b7ac5bdfb7c428e, type: 2}
+  Board: {fileID: 0}
   boardPosition: {x: 0, y: 0, z: 0}
   boardSize: {x: 0, y: 0, z: 0}
   worldBoardSize: {x: 0, y: 0, z: 0}
@@ -248,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f668cbd6f8badd3448d0c4bd8095f195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
 --- !u!114 &1141985893
 MonoBehaviour:
   m_ObjectHideFlags: 0

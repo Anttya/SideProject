@@ -12,8 +12,8 @@ public class BoardManager : MonoBehaviour {
 
     public GameObject Board;            //A wrapper to hold all our tiles
     public Vector3 boardPosition;       //The position of the board in world space
-    public Vector3 boardSize;
-    public Vector3 worldBoardSize;
+    //public Vector3 boardSize;
+    //public Vector3 worldBoardSize;
     public Vector2Int boardDimensions;     //The dimensions of the board
     public GameObject[,] GameBoard;     //The board itself as an array of tiles.
 
@@ -66,8 +66,8 @@ public class BoardManager : MonoBehaviour {
                 //BoardDimensions.Y = 2
                 //Debug.Log(Camera.main.ScreenToWorldPoint(boardSize / boardDimensions));
 
-                Vector3 tilePos = new Vector3(i * si.newBounds.x, j * si.newBounds.y, 10); //Calculate correct position from this spriteInfo
-                GameBoard[i, j].transform.position = tilePos - new Vector3((boardDimensions.x / 2 * si.newBounds.x) - (si.newBounds.x / 2), (boardDimensions.y/2 * si.newBounds.y)-(si.newBounds.y/2), 10); //Testing purposes so tiles are cenetered
+                Vector3 tilePos = new Vector3(i * si.NewBounds.x, j * si.NewBounds.y, 10); //Calculate correct position from this spriteInfo
+                GameBoard[i, j].transform.position = tilePos - new Vector3((boardDimensions.x / 2 * si.NewBounds.x) - (si.NewBounds.x / 2), (boardDimensions.y/2 * si.NewBounds.y)-(si.NewBounds.y/2), 10); //Testing purposes so tiles are cenetered
                 //GameBoard[i, j].transform.position = tilePos + new Vector3(boardPosition.x, -(boardPosition.y + (worldBoardSize.y/2))); //Should work if tile resizes properly
             }
         }
@@ -241,7 +241,7 @@ public class BoardManager : MonoBehaviour {
     {
         //TEMPORARY CODE UNTIL SMARTER ARCHITECTURE
         SpriteInfo sample = GameBoard[0, 0].GetComponent<SpriteInfo>();
-        Vector2 worldTileDimensions = new Vector2(sample.newBounds.x, sample.newBounds.y);
+        Vector2 worldTileDimensions = new Vector2(sample.NewBounds.x, sample.NewBounds.y);
 
 
 
