@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 1141985890}
   - component: {fileID: 1141985891}
   - component: {fileID: 1141985892}
+  - component: {fileID: 1141985893}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -232,14 +233,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 1239063025543200, guid: c1e91f786695a1341b7ac5bdfb7c428e, type: 2}
-  player: {fileID: 1992454602242428, guid: be6144423f02e4342a77c38c74a06b25, type: 2}
-  playerPrefab: {fileID: 1992454602242428, guid: be6144423f02e4342a77c38c74a06b25,
-    type: 2}
+  Board: {fileID: 0}
   boardPosition: {x: 0, y: 0, z: 0}
   boardSize: {x: 0, y: 0, z: 0}
   worldBoardSize: {x: 0, y: 0, z: 0}
   boardDimensions: {x: 5, y: 5}
-  rockPrefab: {fileID: 1248756690773320, guid: 67615812cdf0afe4096fe49c4e7eebd6, type: 2}
 --- !u!114 &1141985892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,4 +249,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f668cbd6f8badd3448d0c4bd8095f195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileSelection: 0
+  gameState: 0
+--- !u!114 &1141985893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1141985889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc01e4e83ac398d46bcfd7668f7aa57b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1992454602242428, guid: be6144423f02e4342a77c38c74a06b25,
+    type: 2}
+  rockPrefab: {fileID: 1248756690773320, guid: 67615812cdf0afe4096fe49c4e7eebd6, type: 2}
